@@ -20,7 +20,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
+h
     body {
       font-family: 'Barlow', sans-serif;
       background: #e8e4de;
@@ -889,30 +889,19 @@ PayPal: [your PayPal email or paypal.me link]</textarea>
 
       setStatus('loading', '⏳ Logging invoice to tracker…');
 
-      fetch(WEBAPP_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(payload)
-      })
-      .then(res => res.json())
-      .then(json => {
-        if (json && json.status === 'success') {
-          setStatus('success', '✓ Invoice ' + payload.invoiceNumber + ' logged to Google Sheet! (Row ' + json.row + ')');
-        } else {
-          setStatus('success', '✓ Invoice ' + payload.invoiceNumber + ' logged to Google Sheet!');
-        }
-      })
-      .catch(err => {
-        // Fallback: no-cors mode (can't read response but request still goes through)
-        fetch(WEBAPP_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(payload)
-        })
-        .then(() => setStatus('success', '✓ Invoice ' + payload.invoiceNumber + ' sent to tracker!'))
-        .catch(e => setStatus('error', '✗ Could not reach tracker: ' + e.message));
-      });
+      // Use GET with URL params — survives Google Apps Script's redirect
+            fetch(WEBAPP_URL + '?data=' + encodeURIComponent(JSON.stringify(payload)))
+            .then(res => res.json())
+            .then(json => {
+                      if (json && json.status === 'success') {
+                                  setStatus('success', '✓ Invoice ' + payload.invoiceNumber + ' logged to Google Sheet! (Row ' + json.row + ')');
+                      } else {
+                                  setStatus('success', '✓ Invoice ' + payload.invoiceNumber + ' logged to Google Sheet!');
+                      }
+            })
+            .catch(err => {
+                      setStatus('error', '✗ Could not reach tracker: ' + err.message);
+            });
     }
 
     // Init
