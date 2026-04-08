@@ -829,10 +829,21 @@
     // ── LOG TO TRACKER ──────────────────────────────────
     const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxtjo2UHhplgw_K1uIWc5U12nMw97XPtXU8OuTbupMphuLmfHFQI1YGRDWbVFhPpCs/exec';
 
-    function setStatus(type, msg) {
+    function setStatus(type, msg, linkUrl, linkText) {
       const el = document.getElementById('log-status');
       el.className = 'log-status ' + type;
-      el.textContent = msg;
+      el.innerHTML = '';
+      const span = document.createElement('span');
+      span.textContent = msg;
+      el.appendChild(span);
+      if (linkUrl) {
+        const a = document.createElement('a');
+        a.href = linkUrl;
+        a.target = '_blank';
+        a.textContent = linkText || 'Open PDF';
+        a.style.cssText = 'margin-left:12px; color:inherit; font-weight:700; text-decoration:underline; letter-spacing:1px;';
+        el.appendChild(a);
+      }
     }
 
     function logToTracker() {
@@ -909,9 +920,10 @@
       .then(res => res.json())
       .then(json => {
         if (json && json.status === 'success') {
-          setStatus('success', '✓ Invoice ' + payload.invoiceNumber + ' logged to Google Sheet! (Row ' + json.row + ')');
+          const msg = '✓ Invoice ' + payload.invoiceNumber + ' logged! (Row ' + json.row + ')';
+          setStatus('success', msg, json.driveUrl || null, '↗ Open PDF');
         } else {
-          setStatus('success', '✓ Invoice ' + payload.invoiceNumber + ' logged to Google Sheet!');
+          setStatus('success', '✓ Invoice ' + payload.invoiceNumber + ' logged!');
         }
       })
       .catch(err => {
