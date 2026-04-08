@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JDGolf Designs — Invoice</title>
+  <title>JDGolf Design — Invoice</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -581,7 +581,7 @@
 </head>
 <body>
 
-  <p class="page-title">JDGolf Designs — Invoice Template &nbsp;|&nbsp; Click any field to edit &nbsp;|&nbsp; Print or Save as PDF</p>
+  <p class="page-title">JDGolf Design — Invoice Template &nbsp;|&nbsp; Click any field to edit &nbsp;|&nbsp; Print or Save as PDF</p>
 
   <div class="toolbar">
     <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
@@ -595,8 +595,8 @@
     <!-- ── HEADER ── -->
     <div class="invoice-header">
       <div>
-        <div class="brand-name">JDGolf Designs</div>
-        <div class="brand-tagline">Creator of Wedgey Golf Training Aid</div>
+        <div class="brand-name">JDGolf Design</div>
+        <div class="brand-tagline">Practice with a purpose</div>
       </div>
       <div class="invoice-title-block">
         <div class="invoice-word">Invoice</div>
@@ -615,10 +615,10 @@
         <div class="bill-block">
           <div class="section-label">From</div>
           <div class="field-group">
-            <input type="text" class="company-name" value="JDGolf Designs" readonly style="font-weight:700; color: #E85228;">
+            <input type="text" class="company-name" value="JDGolf Design" readonly style="font-weight:700; color: #E85228;">
             <input type="text" placeholder="Street Address" value="">
             <input type="text" placeholder="City, Province, Postal Code" value="">
-            <input type="email" placeholder="Email" value="highlightonhighlights@gmail.com">
+            <input type="email" placeholder="Email" value="JDgolfdesign@gmail.com">
             <input type="text" placeholder="Phone" value="">
             <input type="text" placeholder="Website" value="wedgey.ca">
           </div>
@@ -676,8 +676,8 @@
           <tr>
             <td><input type="text" placeholder="Item / service description" value="Wedgey Golf Swing Training Aid"></td>
             <td><input type="number" value="1" min="0" step="1" oninput="recalc()"></td>
-            <td class="align-right"><input type="number" value="29.00" min="0" step="0.01" oninput="recalc()"></td>
-            <td class="line-total">CAD $29.00</td>
+            <td class="align-right"><input type="number" value="29.99" min="0" step="0.01" oninput="recalc()"></td>
+            <td class="line-total">CAD $29.99</td>
           </tr>
           <tr>
             <td><input type="text" placeholder="Item / service description"></td>
@@ -701,10 +701,10 @@
         <div class="totals-table">
           <div class="totals-row">
             <span class="t-label">Subtotal</span>
-            <span class="t-value" id="subtotal">CAD $29.00</span>
+            <span class="t-value" id="subtotal">CAD $29.99</span>
           </div>
           <div class="totals-row">
-            <span class="t-label">GST/HST &nbsp;<input type="number" class="tax-rate-input" id="tax-rate" value="5" min="0" max="100" step="0.01" oninput="recalc()">%</span>
+            <span class="t-label">HST (ON) &nbsp;<input type="number" class="tax-rate-input" id="tax-rate" value="13" min="0" max="100" step="0.01" oninput="recalc()">%</span>
             <span class="t-value" id="tax-amount">CAD $1.45</span>
           </div>
           <div class="totals-row grand-total-row">
@@ -722,8 +722,13 @@
           <span class="payment-chip">PayPal</span>
           <span class="payment-chip">Cash</span>
         </div>
-        <textarea class="payment-details-input" rows="2" placeholder="E-Transfer: your@email.com&#10;PayPal: paypal.me/yourlink">E-Transfer: highlightonhighlights@gmail.com
-PayPal: [your PayPal email or paypal.me link]</textarea>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:12px; color:var(--gray); white-space:nowrap;">E-Transfer:</span>
+            <input type="email" value="alecbjames@hotmail.com" style="border:none; border-bottom:1px solid var(--light-gray); background:transparent; font-family:'Barlow',sans-serif; font-size:12px; color:var(--gray); outline:none; flex:1; padding:1px 0;">
+          </div>
+          <textarea class="payment-details-input" rows="1" placeholder="PayPal: paypal.me/yourlink">PayPal: [your PayPal email or paypal.me link]</textarea>
+        </div>
       </div>
 
       <!-- Notes / Terms -->
@@ -736,9 +741,9 @@ PayPal: [your PayPal email or paypal.me link]</textarea>
 
     <!-- ── FOOTER ── -->
     <div class="invoice-footer">
-      <div class="footer-brand">JDGolf Designs</div>
-      <div class="footer-tagline">Hit Down. Strike Pure.</div>
-      <div class="footer-tagline">© 2026 JDGolf Designs &nbsp;·&nbsp; Wedgey is a JDGolf Designs product.</div>
+      <div class="footer-brand">JDGolf Design</div>
+      <div class="footer-tagline">Practice with a purpose</div>
+      <div class="footer-tagline">© 2026 JDGolf Design &nbsp;·&nbsp; Wedgey is a JDGolf Design product.</div>
     </div>
 
   </div><!-- /invoice-wrapper -->
@@ -798,8 +803,8 @@ PayPal: [your PayPal email or paypal.me link]</textarea>
         <tr>
           <td><input type="text" placeholder="Item / service description" value="Wedgey Golf Swing Training Aid"></td>
           <td><input type="number" value="1" min="0" step="1" oninput="recalc()"></td>
-          <td class="align-right"><input type="number" value="29.00" min="0" step="0.01" oninput="recalc()"></td>
-          <td class="line-total">CAD $29.00</td>
+          <td class="align-right"><input type="number" value="29.99" min="0" step="0.01" oninput="recalc()"></td>
+          <td class="line-total">CAD $29.99</td>
         </tr>
       `;
 
